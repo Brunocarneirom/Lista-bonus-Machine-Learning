@@ -2,23 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly as pt
 import plotly.express as px
-#from plotly.subplots import make_subplots
+from plotly.subplots import make_subplots
 import re
 
-personnel_url = "https://raw.githubusercontent.com/Brunocarneirom/Dashboard-Russia-Ukraine/main/russia_losses_personnel.csv"
-equipment_url = "https://raw.githubusercontent.com/Brunocarneirom/Dashboard-Russia-Ukraine/main/russia_losses_equipment.csv"
-
-# read csv from a URL
-def get_data() -> pd.DataFrame:
-    return pd.read_csv(personnel_url)
-
-personnel = get_data()
-
-# read csv from a URL
-def get_data() -> pd.DataFrame:
-    return pd.read_csv(equipment_url)
-
-equipment = get_data()
+personnel = pd.read_csv("russia_losses_personnel.csv")
+equipment = pd.read_csv("russia_losses_equipment.csv")
 
 war = pd.merge(equipment, personnel, on=["date", "day"])
 war["equipment_loss"] = war['aircraft'] + war['helicopter'] + war['tank'] + war['APC'] + war['field artillery'] + war['naval ship']
