@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
+import matplotlib as mp
 import plotly as pt
 import plotly.express as px
 from plotly.subplots import make_subplots
-import re
 
 personnel = pd.read_csv("russia_losses_personnel.csv")
 equipment = pd.read_csv("russia_losses_equipment.csv")
